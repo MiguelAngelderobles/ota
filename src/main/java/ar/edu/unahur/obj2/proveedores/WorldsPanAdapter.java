@@ -11,19 +11,17 @@ import java.util.Set;
 public class WorldsPanAdapter implements Proveedor {
     private Worldspan worldsPan;
 
-    public void setWorldsPan(Worldspan worldsPan) {
+    public WorldsPanAdapter(Worldspan worldsPan) {
         this.worldsPan = worldsPan;
     }
 
     @Override
     public List<Vuelo> buscarVuelo(DateTime fecha, String origen, String destino) {
-        worldsPan=new Worldspan();
         return worldsPan.searchFlights(fecha.getDayOfMonth(),fecha.getMonthOfYear(),fecha.getYear(),origen,destino);
     }
 
     @Override
     public Boleto comprar(Vuelo vuelo, Set<Pasajero> pasajero) {
-        worldsPan=new Worldspan();
         return worldsPan.bookFlight(vuelo,pasajero);
     }
 }

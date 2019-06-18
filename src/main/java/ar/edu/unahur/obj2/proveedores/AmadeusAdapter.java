@@ -12,19 +12,17 @@ public class AmadeusAdapter implements Proveedor {
 
     private Amadeus amadeus;
 
-    public void setAmadeus(Amadeus amadeus) {
+    public AmadeusAdapter(Amadeus amadeus) {
         this.amadeus = amadeus;
     }
 
     @Override
     public List<Vuelo> buscarVuelo(DateTime fecha, String origen, String destino) {
-        amadeus=new Amadeus();
         return amadeus.executeSearch(fecha,origen,destino);
     }
 
     @Override
     public Boleto comprar(Vuelo vuelo, Set<Pasajero> pasajero) {
-        amadeus=new Amadeus();
         return amadeus.executeBook(vuelo,pasajero);
     }
 
